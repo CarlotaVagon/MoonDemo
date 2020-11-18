@@ -1,3 +1,8 @@
+/* NOTE TO SELF : there seem to be a few problems :
+* 1. "var used instead of 'let' or 'const'" - So I need to see the difference and change it
+* 2. in line 153 there is a then missing .... "promise returned from toggle is ignored"
+* 3. "deprecated symbol used, consult docs for better alternative" (both likes 190 and 192
+* Minor errors in the typos of starfield and cubemap */
 (function () {
     'use strict';
 
@@ -89,10 +94,10 @@
         });
 
         var geo = new THREE.CubeGeometry(size, size, size);
-        
+
         var mesh = new THREE.Mesh(geo, mat);
         scene.add(mesh);
-        
+
         return mesh;
     }
 
@@ -110,7 +115,7 @@
         var aspect = window.innerWidth / window.innerHeight;
         var near = 1;
         var far = 65536;
-        
+
         camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
         camera.position.set(0, 0, 800);
 
