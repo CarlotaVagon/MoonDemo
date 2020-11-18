@@ -1,0 +1,44 @@
+2020.10.28 18:12:33 INFO  started: Metals version 0.9.4 in workspace '/Users/carlota/Desktop/Yr3Project/RGP2/MoonDemo' for client vscode.
+2020.10.28 18:12:36 INFO  time: initialize in 3.02s
+2020.10.28 18:12:37 WARN  no build tool detected in workspace '/Users/carlota/Desktop/Yr3Project/RGP2/MoonDemo'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2020.10.28 21:27:54 INFO  shutting down Metals
+2020.10.28 21:28:37 INFO  started: Metals version 0.9.4 in workspace '/Users/carlota/Desktop/Yr3Project/RGP2/MoonDemo' for client vscode.
+2020.10.28 21:28:44 INFO  time: initialize in 6.87s
+2020.10.28 21:28:47 WARN  no build tool detected in workspace '/Users/carlota/Desktop/Yr3Project/RGP2/MoonDemo'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+Oct 28, 2020 9:28:49 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Oct 28, 2020 9:55:14 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Oct 28, 2020 9:55:52 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Oct 28, 2020 9:57:49 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Oct 28, 2020 9:58:00 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Oct 28, 2020 9:58:18 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Oct 28, 2020 9:58:20 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Oct 28, 2020 9:58:20 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Oct 28, 2020 10:01:48 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+2020.10.28 22:08:19 INFO  shutting down Metals
+2020.11.17 14:30:59 INFO  started: Metals version 0.9.4 in workspace '/Users/carlota/Desktop/Yr3Project/RGP2/MoonDemo' for client vscode.
+2020.11.17 14:31:06 INFO  time: initialize in 6.6s
+2020.11.17 14:31:08 WARN  no build tool detected in workspace '/Users/carlota/Desktop/Yr3Project/RGP2/MoonDemo'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2020.11.17 14:31:37 INFO  shutting down Metals
+2020.11.18 16:29:03 INFO  Started: Metals version 0.9.5 in workspace '/Users/carlota/Desktop/Yr3Project/RGP2/MoonDemo' for client vscode.
+2020.11.18 16:29:08 INFO  time: initialize in 5.46s
+2020.11.18 16:29:09 WARN  Build server is not auto-connectable.
+2020.11.18 16:29:09 WARN  no build tool detected in workspace '/Users/carlota/Desktop/Yr3Project/RGP2/MoonDemo'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+Nov 18, 2020 4:30:14 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Nov 18, 2020 4:30:32 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+2020.11.18 16:35:44 INFO  shutting down Metals
+2020.11.18 17:09:18 INFO  Started: Metals version 0.9.5 in workspace '/Users/carlota/Desktop/Yr3Project/RGP2/MoonDemo' for client vscode.
+2020.11.18 17:09:28 INFO  time: initialize in 10s
+2020.11.18 17:09:30 WARN  Build server is not auto-connectable.
+2020.11.18 17:09:30 WARN  no build tool detected in workspace '/Users/carlota/Desktop/Yr3Project/RGP2/MoonDemo'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2020.11.18 17:28:35 INFO  shutting down Metals
