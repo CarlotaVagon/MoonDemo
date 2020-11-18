@@ -1,7 +1,9 @@
+/* NOTE TO SELF: all the values of 0 (zero) had a px after them but it made an error "unit of
+measure 'px' is redundant I will take them off see if it can run it then */
 body {
     overflow: hidden;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     color: #fff;
     background-color: #000;
 }
@@ -23,36 +25,36 @@ div#hud > div.hud-panel {
 }
 
 div#hud > div.hud-panel.top-left {
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     text-align: left;
 }
 
 div#hud > div.hud-panel.top-right {
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
     text-align: right;
 }
 
 div#hud > div.hud-panel.bottom-left {
-    bottom: 0px;
-    left: 0px;
+    bottom: 0;
+    left: 0;
     text-align: left;
 }
 
 div#hud > div.hud-panel.bottom-right {
-    bottom: 0px;
-    right: 0px;
+    bottom: 0;
+    right: 0;
     text-align: right;
 }
 
 div#loading-container {
     position: absolute;
     margin: auto;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     width: 25%;
     height: 25%;
     text-align: center;
