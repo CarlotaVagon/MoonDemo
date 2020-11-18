@@ -1,0 +1,11 @@
+{
+    "files.watcherExclude": {
+        "**/target": true
+    },
+    "compile-hero.disable-compile-files-on-did-save-code": false,
+    "cSpell.language": "en,en-GB",
+    "cSpell.enableFiletypes": [
+        "!css",
+        "javascript"
+    ]
+}
