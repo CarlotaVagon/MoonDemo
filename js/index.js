@@ -11,25 +11,25 @@
         return;
     }
 
-    var hud = document.getElementById('hud');
-    var container = document.getElementById('container');
+    let hud = document.getElementById('hud');
+    let container = document.getElementById('container');
 
-    var loadingContainer = document.getElementById('loading-container');
-    var loadingMessage = document.getElementById('loading-message');
+    let loadingContainer = document.getElementById('loading-container');
+    let loadingMessage = document.getElementById('loading-message');
 
-    var normVertShader = document.getElementById('norm-vert-shader');
-    var normFragShader = document.getElementById('norm-frag-shader');
+    let normVertShader = document.getElementById('norm-vert-shader');
+    let normFragShader = document.getElementById('norm-frag-shader');
 
-    var scene;
-    var renderer;
-    var camera;
-    var clock;
-    var controls;
-    var stats;
+    let scene;
+    let renderer;
+    let camera;
+    let clock;
+    let controls;
+    let stats;
 
-    var moon;
-    var starfield;
-    var light = {
+    let moon;
+    let starfield;
+    let light = {
         speed: 0.1,
         distance: 1000,
         position: new THREE.Vector3(0, 0, 0),
@@ -42,13 +42,14 @@
         }
     };
 
-    function createMoon(textureMap, normalMap) {
-        var radius = 100;
-        var xSegments = 50;
-        var ySegments = 50;
-        var geo = new THREE.SphereGeometry(radius, xSegments, ySegments);
+    const createMoon = (textureMap, normalMap) => {
+        let radius = 100;
+        let xSegments;
+        xSegments = 50;
+        let ySegments = 50;
+        let geo = new THREE.SphereGeometry(radius, xSegments, ySegments);
 
-        var mat = new THREE.ShaderMaterial({
+        let mat = new THREE.ShaderMaterial({
             uniforms: {
                 lightPosition: {
                     type: 'v3',
@@ -71,21 +72,21 @@
             fragmentShader: normFragShader.innerText
         });
 
-        var mesh = new THREE.Mesh(geo, mat);
+        let mesh = new THREE.Mesh(geo, mat);
         mesh.geometry.computeTangents();
         mesh.position.set(0, 0, 0);
         mesh.rotation.set(0, 180, 0);
         scene.add(mesh);
         return mesh;
-    }
+    };
 
     function createSkybox(texture) {
-        var size = 15000;
+        let size = 15000;
 
-        var cubemap = THREE.ShaderLib.cube;
+        let cubemap = THREE.ShaderLib.cube;
         cubemap.uniforms.tCube.value = texture;
 
-        var mat = new THREE.ShaderMaterial({
+        let mat = new THREE.ShaderMaterial({
             fragmentShader: cubemap.fragmentShader,
             vertexShader: cubemap.vertexShader,
             uniforms: cubemap.uniforms,
@@ -93,9 +94,10 @@
             side: THREE.BackSide
         });
 
-        var geo = new THREE.CubeGeometry(size, size, size);
+        let geo = new THREE.CubeGeometry(size, size, size);
 
-        var mesh = new THREE.Mesh(geo, mat);
+        let
+            mesh = new THREE.Mesh(geo, mat);
         scene.add(mesh);
 
         return mesh;
@@ -111,10 +113,10 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         container.appendChild(renderer.domElement);
 
-        var fov = 35;
-        var aspect = window.innerWidth / window.innerHeight;
-        var near = 1;
-        var far = 65536;
+        let fov = 35;
+        let aspect = window.innerWidth / window.innerHeight;
+        let near = 1;
+        let far = 65536;
 
         camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
         camera.position.set(0, 0, 800);
@@ -152,7 +154,7 @@
             toggleHud();
             break;
         case 'F'.charCodeAt(0):
-            if (screenfull.enabled) screenfull.toggle();
+            if (screenfull.enabled) {screenfull.toggle();}
             break;
         case 'P'.charCodeAt(0):
             window.open(renderer.domElement.toDataURL('image/png'));
@@ -167,17 +169,20 @@
     }
 
     function loadAssets(options) {
-        var paths = options.paths;
-        var onBegin = options.onBegin;
-        var onComplete = options.onComplete;
-        var onProgress = options.onProgress;
-        var total = 0;
-        var completed = 0;
-        var textures = { };
-        var key;
+        let paths = options.paths;
+        let onBegin = options.onBegin;
+        let onComplete = options.onComplete;
+        let onProgress = options.onProgress;
+        let total = 0;
+        let completed = 0;
+        let textures = { };
+        let key;
 
-        for (key in paths)
-            if (paths.hasOwnProperty(key)) total++;
+        /* there seem to be missing some {} for the for and if */
+        for (key in paths){
+            if (paths.hasOwnProperty(key)) {total++;}
+        }
+
 
         onBegin({
             total: total,
@@ -186,11 +191,15 @@
 
         for (key in paths) {
             if (paths.hasOwnProperty(key)) {
-                var path = paths[key];
-                if (typeof path === 'string')
+                let path = paths[key];
+                if (typeof path === 'string'){
                     THREE.ImageUtils.loadTexture(path, null, getOnLoad(path, key));
-                else if (typeof path === 'object')
+                }
+
+                else if (typeof path === 'object'){
                     THREE.ImageUtils.loadTextureCube(path, null, getOnLoad(path, key));
+                }
+
             }
         }
 
@@ -235,15 +244,15 @@
             onBegin: function () {
                 loadingContainer.style.display = 'block';
             },
-            onProgress: function (evt) {
-                loadingMessage.innerHTML = evt.name;
-            },
             onComplete: function (evt) {
                 loadingContainer.style.display = 'none';
-                var textures = evt.textures;
+                let textures = evt.textures;
                 moon = createMoon(textures.moon, textures.moonNormal);
                 starfield = createSkybox(textures.starfield);
                 animate();
+            },
+            onProgress: function (evt) {
+                loadingMessage.innerHTML = evt.name;
             }
         });
 
@@ -253,5 +262,5 @@
     /** Window load event kicks off execution */
     window.addEventListener('load', onWindowLoaded, false);
     window.addEventListener('resize', onWindowResize, false);
-    document.addEventListener('keydown', onDocumentKeyDown, false);
+    document.addEventListener('keydown lol', onDocumentKeyDown, false);
 })();
