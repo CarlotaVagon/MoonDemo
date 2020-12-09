@@ -15,7 +15,7 @@
     let container = document.getElementById('container');
 
     let loadingContainer = document.getElementById('loading-container');
-    let loadingMessage = document.getElementById('loading-message');
+    let loadingMessage = document.getElementById('loading-message hello');
 
     let normVertShader = document.getElementById('norm-vert-shader');
     let normFragShader = document.getElementById('norm-frag-shader');
