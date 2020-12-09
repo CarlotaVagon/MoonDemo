@@ -1,12 +1,16 @@
-﻿<!doctype html>
+﻿<!-- this is the document to run to do it amazong!-->
+<!doctype html>
 <html>
 <head>
-
-  <title>WebGL Moon Demo</title>
+<!-- the tab name at the top in chrome!-->
+  <title>WebGL Moon Demo </title>
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
   <meta name="description" content="Photorealistic 3D Moon Demo in WebGL using satellite imagery." />
+  <!-- for the icon -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- Allow fullscreen app install in Android and IOS respectively -->
   <meta name="mobile-web-app-capable" content="yes" />
@@ -20,13 +24,32 @@
 
   <!-- Three.JS Container DOM Element -->
   <div id="container"></div>
-
+<!-- omg here is the part I can edit the text finally!-->
   <!-- Overlay HUD -->
   <div id="hud">
     <div class="hud-panel top-right">
-      <a href="http://github.com/CoryG89/MoonDemo">WebGL Moon Demo</a> (Three.JS)
-      <br />Created by <a href="http://coryg89.github.io/">Cory Gross</a>
+      <!-- settings icon-->
+      <button>
+        <i class="fa fa-gear"style="color:white">
+        </i>
+      </button>
+      <div class="dropdown">
+          <button class="dropbtn">Settings
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Lables (oon/off)</a>
+            <a href="#">Automatic Rotation (on/off)</a>
+            <a href="#">Light Rotation (on/off)</a>
+            <a href=href="http://github.com/CoryG89/MoonDemo">WebGL Moon Demo</a>
+            <a href="#"> Created by <a href="http://coryg89.github.io/">Cory Gross</a>
+            <a href="#">2nd Developer: <a href="http://coryg89.github.io/">Carlota Vazquez</a>
+
+          </div>
+      </div>
+
     </div>
+    <!-- the "buttons" at the bottom must change this layout!-->
     <div class="hud-panel bottom-right">
       <em>h</em> to toggle HUD
       <br /><em>p</em> for screenshot
