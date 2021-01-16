@@ -262,5 +262,5 @@
     /** Window load event kicks off execution */
     window.addEventListener('load', onWindowLoaded, false);
     window.addEventListener('resize', onWindowResize, false);
-    document.addEventListener('keydown lol', onDocumentKeyDown, false);
+    document.addEventListener('keydown', onDocumentKeyDown, false);
 })();
