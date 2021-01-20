@@ -162,7 +162,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 		}
 
 	};
-
+// improve the quality
 	this.zoomCamera = function () {
 
 		if ( _state === STATE.TOUCH_ZOOM ) {
