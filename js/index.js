@@ -43,10 +43,10 @@
     };
 
     const createMoon = (textureMap, normalMap) => {
-        let radius = 100;
+        let radius = 200;
         let xSegments;
-        xSegments = 50;
-        let ySegments = 50;
+        xSegments = 100;
+        let ySegments = 100;
         let geo = new THREE.SphereGeometry(radius, xSegments, ySegments);
 
         let mat = new THREE.ShaderMaterial({
@@ -70,6 +70,7 @@
             },
             vertexShader: normVertShader.innerText,
             fragmentShader: normFragShader.innerText
+
         });
 
         let mesh = new THREE.Mesh(geo, mat);
@@ -79,6 +80,37 @@
         scene.add(mesh);
         return mesh;
     };
+
+    /*function that is supposed to switch the light on and off*/
+    /*function shaderSwitch() {
+        if (document.getElementById("myCheckbox").checked !== true) {
+            return;
+        }
+        const createMoon = (textureMap, normalMap) => {
+            let mat = new THREE.ShaderMaterial({
+            uniforms: {
+                lightPosition: {
+                    type: 'v3',
+                    value: light.position
+                },
+                textureMap: {
+                    type: 't',
+                    value: textureMap
+                },
+                normalMap: {
+                    type: 't',
+                    value: normalMap
+                },
+                uvScale: {
+                    type: 'v2',
+                    value: new THREE.Vector2(1.0, 1.0)
+                }
+            },
+            vertexShader: normVertShader.innerText,
+            fragmentShader: normFragShader.innerText
+    }
+        }
+    }*/
 
     function createSkybox(texture) {
         let size = 15000;
@@ -230,7 +262,8 @@
     function onWindowLoaded() {
         loadAssets({
             paths: {
-                moon: 'img/maps/moon.jpg',
+                /*changed image of moon to more detailed*/
+                moon: 'img/maps/moon_test.jpg',
                 moonNormal: 'img/maps/normal.jpg',
                 starfield: [
                     'img/starfield/front.png',
