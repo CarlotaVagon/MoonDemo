@@ -46,13 +46,21 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
-            <a >Lables (oon/off)</a>
+            <a >Lables <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+            </a>
             <a >Automatic Rotation <label class="switch">
               <input type="checkbox">
               <span class="slider round"></span>
             </label>
             </a>
-            <a >Light Rotation (on/off)</a>
+            <a >Light Rotation <label class="switch">
+              <input type="checkbox" id="myCheckbox" onchange="shaderSwitch()" checked>
+              <span class="slider round"></span>
+            </label>
+            </a>
             <a href="https://github.com/CarlotaVagon/MoonDemo"><u>WebGL Moon Demo</u></a>
             <a href="http://coryg89.github.io/" ><u>Creator: Cory Gross</u></a>
             <!--might create my own website and add a link here?-->
@@ -94,6 +102,7 @@
     <h2>Loading Assets</h2>
     <p id="loading-message"></p>
   </div>
+
 
   <!-- GLSL vertex shader for the moon -->
   <script id="norm-vert-shader" type="x-shader/x-vertex">
