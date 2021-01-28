@@ -61,8 +61,8 @@
               <span class="slider round"></span>
             </label>
             </a>
-            <a href="https://github.com/CarlotaVagon/MoonDemo"><u>WebGL Moon Demo</u></a>
-            <a href="http://coryg89.github.io/" ><u>Creator: Cory Gross</u></a>
+            <a href="https://github.com/CarlotaVagon/MoonDemo" target="_blank"><u>WebGL Moon Demo</u></a>
+            <a href="http://coryg89.github.io/" target="_blank" ><u>Creator: Cory Gross</u></a>
             <!--might create my own website and add a link here?-->
             <a >2nd Developer: Carlota Vazquez</a>
 
@@ -74,21 +74,78 @@
     <!--To Do:
     - change this and basically delete it
     -find that thing in the left bottom corner and figure it out-->
+
     <div class="hud-panel top-left">
-    <div class="dropdown">
-      <button class="dropbtn">Information
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-content">
-        <a >Apollo 11</a>
-        <a >Apollo 12</a>
-        <a >Apollo 13</a>
-        <a >Apollo 14</a>
-        <a >Apollo 15</a>
-        <a >Apollo 16</a>
-        <a >Apollo 17</a>
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <button type="button" class="collapsible">Apollo 11</button>
+        <div class="content">
+          <p style="color:white">Apollo 11 was the first manned mission to land on the Moon. The first steps by humans on another planetary body were taken by Neil Armstrong and Buzz Aldrin on July 20, 1969. The astronauts also returned to Earth the first samples from another planetary body.</p>
+          <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo11.cfm" target="_blank">more</a>
+        </div>
+        <button type="button" class="collapsible">Apollo 12</button>
+        <div class="content">
+          <p style="color:white">The Apollo 12 mission was the second manned lunar landing mission. Its objective was to perform detailed scientific lunar exploration. The lunar module pilot, was launched from Kennedy Space Center, Fla., at 11:22:00 EST on November 14, 1969.</p>
+          <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo12.cfm" target="_blank">more</a>
+        </div>
+        <button type="button" class="collapsible">Apollo 13</button>
+        <div class="content">
+          <p style="color:white">This is where the infamous “Houston, we've had a problem” came from. An explosion in one of the oxygen tanks crippled the spacecraft during flight and the crew were forced to orbit the Moon and return to the Earth without landing. April 11, 1970.</p>
+          <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo13.cfm" target="_blank">more</a>
+        </div>
+        <button type="button" class="collapsible">Apollo 14</button>
+        <div class="content">
+          <p style="color:white">Apollo 14 landed in the Fra Mauro region, the intended landing site of the aborted Apollo 13 mission. They collected samples, took photographs, and the nearby Cone crater. One of the more famous moments was when Apollo 14 commander Alan Shepard hit 2 golf balls on the Moon. January 31, 1971.</p>
+          <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo14.cfm" target="_blank">more</a>
+        </div>
+        <button type="button" class="collapsible">Apollo 15</button>
+        <div class="content">
+          <p style="color:white">Apollo 15 was the fourth mission to land men on the Moon. This mission was the first flight of the Lunar Roving Vehicle which astronauts used to explore the geology of the Hadley Rille/Apennine region. July 26, 1971. </p>
+          <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo15.cfm" target="_blank">more</a>
+        </div>
+        <button type="button" class="collapsible">Apollo 16</button>
+        <div class="content">
+          <p style="color:white"> Apollo 16 was the fifth successful mision. It was also the second flight of the Lunar Roving Vehicle. Astronauts collected samples, took photographs and conducted experiments that included the first use of an ultraviolet camera/spectrograph on the Moon. April 16, 1972. </p>
+          <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo16.cfm" target="_blank">more</a>
+        </div>
+        <button type="button" class="collapsible">Apollo 17</button>
+        <div class="content">
+          <p style="color:white">Apollo 17 was the last Apollo mission to land men on the Moon. Eugene Cernan, commander of Apollo 17, still holds the distinction of being the last man to walk on the Moon, as no humans have visited the Moon since December 14, 1972. </p>
+          <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo17.cfm" target="_blank">more</a>
+        </div>
+
+        <script>
+          var coll = document.getElementsByClassName("collapsible");
+          var i;
+
+          for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var content = this.nextElementSibling;
+              if (content.style.display === "block") {
+                content.style.display = "none";
+              } else {
+                content.style.display = "block";
+              }
+            });
+          }
+        </script>
+
       </div>
-    </div>
+
+
+      <span style="font-size:15px;cursor:pointer;color:white" onclick="openNav()">&#9432; information</span>
+
+      <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+      </script>
+
     </div>
     <div class="hud-panel bottom-right">
       <em>h</em> to toggle HUD
