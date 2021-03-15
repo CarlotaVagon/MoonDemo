@@ -37,37 +37,40 @@
     -->
     <div class="hud-panel top-right">
       <!-- settings icon-->
-
       <div class="dropdown">
-          <button class="dropbtn">
-            <i class="fa fa-gear"style="color:white">
-            </i>
-          </button>
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-content">
-            <a >Lables <label class="switch">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
-            </a>
-            <a >Automatic Rotation <label class="switch">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
-            </a>
-            <a >Light Rotation <label class="switch">
-              <input type="checkbox" id="myCheckbox" onchange="shaderSwitch()" checked>
-              <span class="slider round"></span>
-            </label>
-            </a>
-            <a href="https://github.com/CarlotaVagon/MoonDemo" target="_blank"><u>WebGL Moon Demo</u></a>
-            <a href="http://coryg89.github.io/" target="_blank" ><u>Creator: Cory Gross</u></a>
-            <!--might create my own website and add a link here?-->
-            <a >2nd Developer: Carlota Vazquez</a>
+      <button class="dropbtn" style="color:white;font-size:20px">Settings
+        <i class="fa fa-gear"style="color:white">
+        </i>
+      </button>
+      <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a >Lables <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+        </a>
+        <a >Automatic Rotation <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+        </a>
+        <a >Light Rotation <label class="switch">
+          <input type="checkbox" id="myCheckbox" onchange="shaderSwitch()" checked>
+          <span class="slider round"></span>
+        </label>
+        </a>
+        <a href="https://github.com/CarlotaVagon/MoonDemo" target="_blank"><u>WebGL Moon Demo</u></a>
+        <a href="http://coryg89.github.io/" target="_blank" ><u>Creator: Cory Gross</u></a>
+        <!--might create my own website and add a link here?-->
+        <a >2nd Developer: Carlota Vazquez</a>
 
-          </div>
       </div>
+    </div>
+
+
+
+
 
     </div>
     <!-- the "buttons" at the bottom must change this layout!-->
@@ -75,6 +78,7 @@
     - change this and basically delete it
     -find that thing in the left bottom corner and figure it out-->
 
+    <!-- Information feature-->
     <div class="hud-panel top-left">
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -133,14 +137,17 @@
 
       </div>
 
+      <!--information title-->
+      <span style="font-size:20px;cursor:pointer;color:white" onclick="openNav()">&#9432; information</span>
 
-      <span style="font-size:15px;cursor:pointer;color:white" onclick="openNav()">&#9432; information</span>
-
+      <!--opens the side bar-->
       <script>
         function openNav() {
           document.getElementById("mySidenav").style.width = "250px";
+
         }
 
+        <!--closes the side bar-->
         function closeNav() {
           document.getElementById("mySidenav").style.width = "0";
         }
