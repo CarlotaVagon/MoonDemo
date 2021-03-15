@@ -1,0 +1,30 @@
+<div class="dropdown">
+          <button class="dropbtn">
+            <i class="fa fa-gear"style="color:white">
+            </i>
+          </button>
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a >Lables <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+            </a>
+            <a >Automatic Rotation <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+            </a>
+            <a >Light Rotation <label class="switch">
+              <input type="checkbox" id="myCheckbox" onchange="shaderSwitch()" checked>
+              <span class="slider round"></span>
+            </label>
+            </a>
+            <a href="https://github.com/CarlotaVagon/MoonDemo" target="_blank"><u>WebGL Moon Demo</u></a>
+            <a href="http://coryg89.github.io/" target="_blank" ><u>Creator: Cory Gross</u></a>
+            <!--might create my own website and add a link here?-->
+            <a >2nd Developer: Carlota Vazquez</a>
+
+          </div>
+      </div>
