@@ -263,8 +263,8 @@
         loadAssets({
             paths: {
                 /*changed image of moon to more detailed*/
-                moon: 'img/maps/moon_test.jpg',
-                moonNormal: 'img/maps/normal.jpg',
+                moon: 'img/maps/moon.jpg',
+                moonNormal: 'img/maps/normal_moon3.jpg',
                 starfield: [
                     'img/starfield/front.png',
                     'img/starfield/back.png',
