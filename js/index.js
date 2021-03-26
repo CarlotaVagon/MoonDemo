@@ -263,8 +263,8 @@
         loadAssets({
             paths: {
                 /*changed image of moon to more detailed*/
-                moon: 'img/maps/moon.jpg',
-                moonNormal: 'img/maps/normal_moon3.jpg',
+                moon: 'img/maps/nasa/Iroc_color_poles_8k.tif',
+                moonNormal: 'img/maps/Iroc_color_normal_8k.jpg',
                 starfield: [
                     'img/starfield/front.png',
                     'img/starfield/back.png',
