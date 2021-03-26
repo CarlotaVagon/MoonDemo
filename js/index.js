@@ -263,16 +263,18 @@
         loadAssets({
             paths: {
                 /*changed image of moon to more detailed*/
-                moon: 'img/maps/nasa/Iroc_color_poles_8k.tif',
-                moonNormal: 'img/maps/Iroc_color_normal_8k.jpg',
-                starfield: [
+                /*notes for some reason the nasa images dont load, investigate why*/
+                moon: 'img/maps/moon.jpg',
+                moonNormal: 'img/maps/normal.jpg',
+                /*test comment out starfield for high resolution of the moon*/
+                /*starfield: [
                     'img/starfield/front.png',
                     'img/starfield/back.png',
                     'img/starfield/left.png',
                     'img/starfield/right.png',
                     'img/starfield/top.png',
                     'img/starfield/bottom.png'
-                ]
+                ]*/
             },
             onBegin: function () {
                 loadingContainer.style.display = 'block';
