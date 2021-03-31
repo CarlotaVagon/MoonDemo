@@ -112,6 +112,51 @@
         }
     }*/
 
+    /*This function will turn on and off the leap motion controller*/
+    function OnOffLeap() {
+        var controller = new Leap.Controller();
+        if (document.getElementById("LeapCheckbox").checked === true) {
+            document.write("it works");
+
+            Controller.setOptimizeHMD(true);
+            controller.connect();
+
+            controller.on('frame', onFrame);
+
+            function onFrame(frame) {
+                console.log("Frame event for frame " + frame.id);
+            }
+
+        }
+        else {
+            document.write("it works");
+            controller.setOptimizeHMD(false);
+        }
+    }
+
+    /*test */
+    const toggle = document.querySelector('.toggle input')
+    var controller = new Leap.Controller();
+    toggle.addEventListener('click', () => {
+        const onOff = toggle.parentNode.querySelector('.onoff')
+        onOff.textContent = toggle.checked ? 'ON' : 'OFF'
+        controller.setOptimizeHMD(true);
+        controller.connect();
+
+        controller.on('frame', onFrame);
+
+        function onFrame(frame) {
+            console.log("Frame event for frame " + frame.id);
+        }
+        var controller = Leap.loop({enableGestures:true}, function(frame){
+            var currentFrame = frame;
+            var previousFrame = controller.frame(1);
+            var tenFramesBack = controller.frame(10);
+        });
+
+
+    })
+
     function createSkybox(texture) {
         let size = 15000;
 
@@ -264,17 +309,17 @@
             paths: {
                 /*changed image of moon to more detailed*/
                 /*notes for some reason the nasa images dont load, investigate why*/
-                moon: 'img/maps/moon.jpg',
+                moon: 'img/maps/moon1.jpg',
                 moonNormal: 'img/maps/normal.jpg',
                 /*test comment out starfield for high resolution of the moon*/
-                /*starfield: [
+                starfield: [
                     'img/starfield/front.png',
                     'img/starfield/back.png',
                     'img/starfield/left.png',
                     'img/starfield/right.png',
                     'img/starfield/top.png',
                     'img/starfield/bottom.png'
-                ]*/
+                ]
             },
             onBegin: function () {
                 loadingContainer.style.display = 'block';
