@@ -45,18 +45,22 @@
       <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
-        <a >Lables <label class="switch">
+
+        <a>Leap motion
+          <label class="toggle">
+            <span class="onoff">OFF</span>
+          <input type="checkbox" />
+          <span class="slider round"></span>
+          <!--<div id="myDIV">Hello</div> test that the toggle works-->
+        </label>
+       </a>
+        <a >Automatic Rotation <label class="toggle">
           <input type="checkbox">
           <span class="slider round"></span>
         </label>
         </a>
-        <a >Automatic Rotation <label class="switch">
-          <input type="checkbox">
-          <span class="slider round"></span>
-        </label>
-        </a>
-        <a >Light Rotation <label class="switch">
-          <input type="checkbox" id="myCheckbox" onchange="shaderSwitch()" checked>
+        <a >Light Rotation <label class="toggle">
+          <input type="checkbox" id="Checkbox" onchange="shaderSwitch()" checked>
           <span class="slider round"></span>
         </label>
         </a>
@@ -223,6 +227,12 @@
         gl_FragColor = texture2D(textureMap, vUv) * lighting;
     }
   </script>
+
+  <!--plugins for the leap motion controller-->
+<script src="//js.leapmotion.com/leap-plugins-0.1.12.min.js"></script>
+<script src="//js.leapmotion.com/leap-plugins-0.1.12.js"></script>
+<script src="//js.leapmotion.com/leap.rigged-hand-0.1.7.min.js"></script>
+<script src="//js.leapmotion.com/leap.rigged-hand-0.1.7.js"></script>
 
   <!-- Include vendor scripts -->
   <script type="text/javascript" src="vendor/three.min.js"></script>
