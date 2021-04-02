@@ -134,26 +134,36 @@ div#loading-container {
 }
 
 /*the switch buttons settings*/
-.switch {
+.toggle {
     position: relative;
     display: inline-block;
     width: 30px;
     height: 17px;
 }
 
-.switch input {
+.toggle input {
+    position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
 }
 
+.toggle .onoff {
+    display: inline-block;
+    color: #fff;
+    font-size: 16px;
+    /*y then x*/
+    padding: 12px 16px;
+    text-decoration: none;
+    text-align: left;
+}
+
 .slider {
-    position: absolute;
+    position: relative;
+    display: inline-block;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    width: 20px;
+    height: 12px;
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
@@ -162,8 +172,8 @@ div#loading-container {
 .slider:before {
     position: absolute;
     content: "";
-    height: 13px;
-    width: 13px;
+    height: 12px;
+    width: 12px;
     left: 2px;
     bottom: 2px;
     background-color: white;
@@ -187,7 +197,7 @@ input:checked + .slider:before {
 
 /* Rounded sliders */
 .slider.round {
-    border-radius: 17px;
+    border-radius: 20px;
 }
 
 .slider.round:before {
@@ -244,6 +254,8 @@ input:checked + .slider:before {
     display: block;
     transition: 0.3s;
 }
+
+
 
 .sidenav a:hover {
     color: #f1f1f1;
