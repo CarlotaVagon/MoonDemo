@@ -30,7 +30,7 @@
     let moon;
     let starfield;
     let light = {
-        speed: 0.1,
+        speed: 0.0,
         distance: 1000,
         position: new THREE.Vector3(0, 0, 0),
         orbit: function (center, time) {
@@ -134,13 +134,13 @@
         }
     }
 
-    /*test */
+    /*test*/
     const toggle = document.querySelector('.toggle input')
-    var controller = new Leap.Controller();
+
     toggle.addEventListener('click', () => {
         const onOff = toggle.parentNode.querySelector('.onoff')
         onOff.textContent = toggle.checked ? 'ON' : 'OFF'
-        controller.setOptimizeHMD(true);
+        var controller = new Leap.Controller();
         controller.connect();
 
         controller.on('frame', onFrame);
@@ -148,6 +148,7 @@
         function onFrame(frame) {
             console.log("Frame event for frame " + frame.id);
         }
+        /*plan for a hand model in corner*/
         var controller = Leap.loop({enableGestures:true}, function(frame){
             var currentFrame = frame;
             var previousFrame = controller.frame(1);
@@ -155,7 +156,7 @@
         });
 
 
-    })
+    });
 
     function createSkybox(texture) {
         let size = 15000;
@@ -309,8 +310,8 @@
             paths: {
                 /*changed image of moon to more detailed*/
                 /*notes for some reason the nasa images dont load, investigate why*/
-                moon: 'img/maps/moon1.jpg',
-                moonNormal: 'img/maps/normal.jpg',
+                moon: 'img/maps/moon8k.jpg',
+                moonNormal: 'img/maps/normal8k.jpg',
                 /*test comment out starfield for high resolution of the moon*/
                 starfield: [
                     'img/starfield/front.png',
