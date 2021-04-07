@@ -82,35 +82,39 @@
     };
 
     /*function that is supposed to switch the light on and off*/
-    /*function shaderSwitch() {
-        if (document.getElementById("myCheckbox").checked !== true) {
-            return;
+    function shaderSwitch() {
+        if (document.getElementById("Checkbox").checked !== true) {
+            let light = {
+                speed: 0.0,
+                    distance: 1000,
+                    position: new THREE.Vector3(0, 0, 0),
+                    orbit: function (center, time) {
+                    this.position.x =
+                        (center.x + this.distance) * Math.sin(time * -this.speed);
+
+                    this.position.z =
+                        (center.z + this.distance) * Math.cos(time * this.speed);
+            }
         }
-        const createMoon = (textureMap, normalMap) => {
-            let mat = new THREE.ShaderMaterial({
-            uniforms: {
-                lightPosition: {
-                    type: 'v3',
-                    value: light.position
-                },
-                textureMap: {
-                    type: 't',
-                    value: textureMap
-                },
-                normalMap: {
-                    type: 't',
-                    value: normalMap
-                },
-                uvScale: {
-                    type: 'v2',
-                    value: new THREE.Vector2(1.0, 1.0)
-                }
-            },
-            vertexShader: normVertShader.innerText,
-            fragmentShader: normFragShader.innerText
+
     }
+        else{
+            let light = {
+                speed: 0.5,
+                distance: 1000,
+                position: new THREE.Vector3(0, 0, 0),
+                orbit: function (center, time) {
+                    this.position.x =
+                        (center.x + this.distance) * Math.sin(time * -this.speed);
+
+                    this.position.z =
+                        (center.z + this.distance) * Math.cos(time * this.speed);
+                }
+            }
         }
-    }*/
+    }
+
+
 
     /*This function will turn on and off the leap motion controller*/
     function OnOffLeap() {
@@ -134,7 +138,7 @@
         }
     }
 
-    /*test*/
+    /*This turns on and off the leap motion controller*/
     const toggle = document.querySelector('.toggle input')
 
     toggle.addEventListener('click', () => {
