@@ -19,6 +19,11 @@
   <!-- Import external stylesheets -->
   <link type="text/css" href="css/main.css" rel="stylesheet" />
 
+  <!--Import Leap motion from https://github.com/leapmotion/leapjs-rigged-hand-->
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js"></script>
+  <script src="//js.leapmotion.com/leap-0.6.4.js"></script>
+  <script src="//js.leapmotion.com/leap-plugins-0.1.10.js"></script>
+  <script type="text/javascript" src="../build/leap.rigged-hand-0.1.7.js"></script>
 </head>
 <body>
 <!---->
@@ -59,8 +64,42 @@
           <span class="slider round"></span>
         </label>
         </a>
-        <a >Light Rotation <label class="toggle">
-          <input type="checkbox" id="Checkbox" onchange="shaderSwitch()" checked>
+        <a >Light Rotation
+          <label class="toggle">
+          <input type="checkbox" id="Checkbox" onchange="function shaderSwitch() {
+          if (document.getElementById("Checkbox").checked !== true) {
+            let light = {
+            speed: 0.0,
+            distance: 1000,
+            position: new THREE.Vector3(0, 0, 0),
+            orbit: function (center, time) {
+            this.position.x =
+            (center.x + this.distance) * Math.sin(time * -this.speed);
+
+            this.position.z =
+            (center.z + this.distance) * Math.cos(time * this.speed);
+            }
+            }
+
+            }
+            else{
+            let light = {
+            speed: 0.5,
+            distance: 1000,
+            position: new THREE.Vector3(0, 0, 0),
+            orbit: function (center, time) {
+            this.position.x =
+            (center.x + this.distance) * Math.sin(time * -this.speed);
+
+            this.position.z =
+            (center.z + this.distance) * Math.cos(time * this.speed);
+            }
+            }
+            }
+            }
+
+            }
+          shaderSwitch()" checked>
           <span class="slider round"></span>
         </label>
         </a>
@@ -158,10 +197,8 @@
       </script>
 
     </div>
-    <div class="hud-panel bottom-right">
+    <div class="hud-panel bottom-left">
       <em>h</em> to toggle HUD
-      <br /><em>p</em> for screenshot
-      <br /><em>f</em> for fullscreen
     </div>
     <div class="hud-panel center"></div>
   </div>
@@ -170,6 +207,15 @@
     <h2>Loading Assets</h2>
     <p id="loading-message"></p>
   </div>
+
+
+
+  <script src="LeapCursor/leapcursor-with-dependencies.min.js?gestureColor=#6DCC44"></script>
+<div class="fixed">
+Leap motion controller will appear her at rest:
+
+</div>
+
 
 
   <!-- GLSL vertex shader for the moon -->
@@ -229,10 +275,10 @@
   </script>
 
   <!--plugins for the leap motion controller-->
-<script src="//js.leapmotion.com/leap-plugins-0.1.12.min.js"></script>
-<script src="//js.leapmotion.com/leap-plugins-0.1.12.js"></script>
-<script src="//js.leapmotion.com/leap.rigged-hand-0.1.7.min.js"></script>
-<script src="//js.leapmotion.com/leap.rigged-hand-0.1.7.js"></script>
+<script type="text/javascript" src="//js.leapmotion.com/leap-plugins-0.1.12.min.js"></script>
+<script type="text/javascript" src="//js.leapmotion.com/leap-plugins-0.1.12.js"></script>
+<script type="text/javascript" src="//js.leapmotion.com/leap.rigged-hand-0.1.7.min.js"></script>
+<script type="text/javascript" src="//js.leapmotion.com/leap.rigged-hand-0.1.7.js"></script>
 
   <!-- Include vendor scripts -->
   <script type="text/javascript" src="vendor/three.min.js"></script>
