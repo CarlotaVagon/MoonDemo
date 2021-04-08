@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-<!-- the tab name at the top in chrome!-->
+  <!-- the tab name at the top in chrome!-->
   <title>WebGL Moon Demo </title>
 
   <meta charset="utf-8" />
@@ -19,30 +19,27 @@
   <!-- Import external stylesheets -->
   <link type="text/css" href="css/main.css" rel="stylesheet" />
 
-  <!--Import Leap motion from https://github.com/leapmotion/leapjs-rigged-hand-->
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js"></script>
-  <script src="//js.leapmotion.com/leap-0.6.4.js"></script>
-  <script src="//js.leapmotion.com/leap-plugins-0.1.10.js"></script>
-  <script type="text/javascript" src="../build/leap.rigged-hand-0.1.7.js"></script>
+
 </head>
 <body>
 <!---->
-  <!-- Three.JS Container DOM Element -->
-  <div id="container"></div>
-<!-- omg here is the part I can edit the text finally!-->
-  <!-- Overlay HUD -->
-  <div id="hud">
-    <!--To do
-    - Create the settings on off buttons
-    - change the link of my name to my git
-    - make it pretty
-    -make a similar one for info in the top left
-    -make expanding features
-    - pop ups and zoom in or out
-    -->
-    <div class="hud-panel top-right">
-      <!-- settings icon-->
-      <div class="dropdown">
+<!-- Three.JS Container DOM Element -->
+<div id="container"></div>
+<div id="container2"></div>
+<div id="cursor"></div>
+<!-- Overlay HUD -->
+<div id="hud">
+  <!--To do
+  - Create the settings on off buttons
+  - change the link of my name to my git
+  - make it pretty
+  -make a similar one for info in the top left
+  -make expanding features
+  - pop ups and zoom in or out
+  -->
+  <div class="hud-panel top-right">
+    <!-- settings icon-->
+    <div class="dropdown">
       <button class="dropbtn" style="color:white;font-size:20px">Settings
         <i class="fa fa-gear"style="color:white">
         </i>
@@ -52,57 +49,18 @@
       <div class="dropdown-content">
 
         <a>Leap motion
-          <label class="toggle">
-            <span class="onoff">OFF</span>
-          <input type="checkbox" />
-          <span class="slider round"></span>
-          <!--<div id="myDIV">Hello</div> test that the toggle works-->
-        </label>
-       </a>
-        <a >Automatic Rotation <label class="toggle">
-          <input type="checkbox">
-          <span class="slider round"></span>
-        </label>
+          <!--<button onclick="turnOnLeap()">Turn On</button>
+          <div class="fixed">
+              Leap motion controller will appear her at rest:
+          </div>-->
+
         </a>
-        <a >Light Rotation
-          <label class="toggle">
-          <input type="checkbox" id="Checkbox" onchange="function shaderSwitch() {
-          if (document.getElementById("Checkbox").checked !== true) {
-            let light = {
-            speed: 0.0,
-            distance: 1000,
-            position: new THREE.Vector3(0, 0, 0),
-            orbit: function (center, time) {
-            this.position.x =
-            (center.x + this.distance) * Math.sin(time * -this.speed);
-
-            this.position.z =
-            (center.z + this.distance) * Math.cos(time * this.speed);
-            }
-            }
-
-            }
-            else{
-            let light = {
-            speed: 0.5,
-            distance: 1000,
-            position: new THREE.Vector3(0, 0, 0),
-            orbit: function (center, time) {
-            this.position.x =
-            (center.x + this.distance) * Math.sin(time * -this.speed);
-
-            this.position.z =
-            (center.z + this.distance) * Math.cos(time * this.speed);
-            }
-            }
-            }
-            }
-
-            }
-          shaderSwitch()" checked>
-          <span class="slider round"></span>
-        </label>
+        <a>Light rotation:
+          <div class="row">
+            <input type="button" id="btn-stop" class="btn-a" value="stop">
+          </div>
         </a>
+
         <a href="https://github.com/CarlotaVagon/MoonDemo" target="_blank"><u>WebGL Moon Demo</u></a>
         <a href="http://coryg89.github.io/" target="_blank" ><u>Creator: Cory Gross</u></a>
         <!--might create my own website and add a link here?-->
@@ -111,115 +69,128 @@
       </div>
     </div>
 
+    <!--<script>
+        function turnOnLeap() {
+            var x = document.getElementById("fixed");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                <script src="LeapCursor/leapcursor-with-dependencies.min.js?gestureColor=#6DCC44"></script>
+    } else {
+    x.style.display = "none";
+    }
+    }
+    </script>-->
 
 
 
 
-    </div>
-    <!-- the "buttons" at the bottom must change this layout!-->
-    <!--To Do:
-    - change this and basically delete it
-    -find that thing in the left bottom corner and figure it out-->
 
-    <!-- Information feature-->
-    <div class="hud-panel top-left">
-      <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <button type="button" class="collapsible">Apollo 11</button>
-        <div class="content">
-          <p style="color:white">Apollo 11 was the first manned mission to land on the Moon. The first steps by humans on another planetary body were taken by Neil Armstrong and Buzz Aldrin on July 20, 1969. The astronauts also returned to Earth the first samples from another planetary body.</p>
-          <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo11.cfm" target="_blank">more</a>
-        </div>
-        <button type="button" class="collapsible">Apollo 12</button>
-        <div class="content">
-          <p style="color:white">The Apollo 12 mission was the second manned lunar landing mission. Its objective was to perform detailed scientific lunar exploration. The lunar module pilot, was launched from Kennedy Space Center, Fla., at 11:22:00 EST on November 14, 1969.</p>
-          <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo12.cfm" target="_blank">more</a>
-        </div>
-        <button type="button" class="collapsible">Apollo 13</button>
-        <div class="content">
-          <p style="color:white">This is where the infamous “Houston, we've had a problem” came from. An explosion in one of the oxygen tanks crippled the spacecraft during flight and the crew were forced to orbit the Moon and return to the Earth without landing. April 11, 1970.</p>
-          <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo13.cfm" target="_blank">more</a>
-        </div>
-        <button type="button" class="collapsible">Apollo 14</button>
-        <div class="content">
-          <p style="color:white">Apollo 14 landed in the Fra Mauro region, the intended landing site of the aborted Apollo 13 mission. They collected samples, took photographs, and the nearby Cone crater. One of the more famous moments was when Apollo 14 commander Alan Shepard hit 2 golf balls on the Moon. January 31, 1971.</p>
-          <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo14.cfm" target="_blank">more</a>
-        </div>
-        <button type="button" class="collapsible">Apollo 15</button>
-        <div class="content">
-          <p style="color:white">Apollo 15 was the fourth mission to land men on the Moon. This mission was the first flight of the Lunar Roving Vehicle which astronauts used to explore the geology of the Hadley Rille/Apennine region. July 26, 1971. </p>
-          <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo15.cfm" target="_blank">more</a>
-        </div>
-        <button type="button" class="collapsible">Apollo 16</button>
-        <div class="content">
-          <p style="color:white"> Apollo 16 was the fifth successful mision. It was also the second flight of the Lunar Roving Vehicle. Astronauts collected samples, took photographs and conducted experiments that included the first use of an ultraviolet camera/spectrograph on the Moon. April 16, 1972. </p>
-          <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo16.cfm" target="_blank">more</a>
-        </div>
-        <button type="button" class="collapsible">Apollo 17</button>
-        <div class="content">
-          <p style="color:white">Apollo 17 was the last Apollo mission to land men on the Moon. Eugene Cernan, commander of Apollo 17, still holds the distinction of being the last man to walk on the Moon, as no humans have visited the Moon since December 14, 1972. </p>
-          <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo17.cfm" target="_blank">more</a>
-        </div>
+  </div>
+  <!-- the "buttons" at the bottom must change this layout!-->
+  <!--To Do:
+  - change this and basically delete it
+  -find that thing in the left bottom corner and figure it out-->
 
-        <script>
-          var coll = document.getElementsByClassName("collapsible");
-          var i;
-
-          for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-              this.classList.toggle("active");
-              var content = this.nextElementSibling;
-              if (content.style.display === "block") {
-                content.style.display = "none";
-              } else {
-                content.style.display = "block";
-              }
-            });
-          }
-        </script>
-
+  <!-- Information feature-->
+  <div class="hud-panel top-left">
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <button type="button" class="collapsible">Apollo 11</button>
+      <div class="content">
+        <p style="color:white">Apollo 11 was the first manned mission to land on the Moon. The first steps by humans on another planetary body were taken by Neil Armstrong and Buzz Aldrin on July 20, 1969. The astronauts also returned to Earth the first samples from another planetary body.</p>
+        <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo11.cfm" target="_blank">more</a>
+      </div>
+      <button type="button" class="collapsible">Apollo 12</button>
+      <div class="content">
+        <p style="color:white">The Apollo 12 mission was the second manned lunar landing mission. Its objective was to perform detailed scientific lunar exploration. The lunar module pilot, was launched from Kennedy Space Center, Fla., at 11:22:00 EST on November 14, 1969.</p>
+        <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo12.cfm" target="_blank">more</a>
+      </div>
+      <button type="button" class="collapsible">Apollo 13</button>
+      <div class="content">
+        <p style="color:white">This is where the infamous “Houston, we've had a problem” came from. An explosion in one of the oxygen tanks crippled the spacecraft during flight and the crew were forced to orbit the Moon and return to the Earth without landing. April 11, 1970.</p>
+        <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo13.cfm" target="_blank">more</a>
+      </div>
+      <button type="button" class="collapsible">Apollo 14</button>
+      <div class="content">
+        <p style="color:white">Apollo 14 landed in the Fra Mauro region, the intended landing site of the aborted Apollo 13 mission. They collected samples, took photographs, and the nearby Cone crater. One of the more famous moments was when Apollo 14 commander Alan Shepard hit 2 golf balls on the Moon. January 31, 1971.</p>
+        <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo14.cfm" target="_blank">more</a>
+      </div>
+      <button type="button" class="collapsible">Apollo 15</button>
+      <div class="content">
+        <p style="color:white">Apollo 15 was the fourth mission to land men on the Moon. This mission was the first flight of the Lunar Roving Vehicle which astronauts used to explore the geology of the Hadley Rille/Apennine region. July 26, 1971. </p>
+        <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo15.cfm" target="_blank">more</a>
+      </div>
+      <button type="button" class="collapsible">Apollo 16</button>
+      <div class="content">
+        <p style="color:white"> Apollo 16 was the fifth successful mision. It was also the second flight of the Lunar Roving Vehicle. Astronauts collected samples, took photographs and conducted experiments that included the first use of an ultraviolet camera/spectrograph on the Moon. April 16, 1972. </p>
+        <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo16.cfm" target="_blank">more</a>
+      </div>
+      <button type="button" class="collapsible">Apollo 17</button>
+      <div class="content">
+        <p style="color:white">Apollo 17 was the last Apollo mission to land men on the Moon. Eugene Cernan, commander of Apollo 17, still holds the distinction of being the last man to walk on the Moon, as no humans have visited the Moon since December 14, 1972. </p>
+        <a style="color:white;font-size:15px;text-decoration: underline" href="https://airandspace.si.edu/explore-and-learn/topics/apollo/apollo-program/landing-missions/apollo17.cfm" target="_blank">more</a>
       </div>
 
-      <!--information title-->
-      <span style="font-size:20px;cursor:pointer;color:white" onclick="openNav()">&#9432; information</span>
-
-      <!--opens the side bar-->
       <script>
-        function openNav() {
-          document.getElementById("mySidenav").style.width = "250px";
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
 
-        }
-
-        <!--closes the side bar-->
-        function closeNav() {
-          document.getElementById("mySidenav").style.width = "0";
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+              content.style.display = "none";
+            } else {
+              content.style.display = "block";
+            }
+          });
         }
       </script>
 
     </div>
-    <div class="hud-panel bottom-left">
-      <em>h</em> to toggle HUD
-    </div>
-    <div class="hud-panel center"></div>
+
+    <!--information title-->
+    <span style="font-size:20px;cursor:pointer;color:white" onclick="openNav()">&#9432; information</span>
+
+    <!--opens the side bar-->
+    <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+
+      }
+
+      <!--closes the side bar-->
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+    </script>
+
   </div>
-
-  <div id="loading-container">
-    <h2>Loading Assets</h2>
-    <p id="loading-message"></p>
+  <div class="hud-panel bottom-right">
+    <em>h</em> to toggle HUD
   </div>
+  <div class="hud-panel center"></div>
+</div>
+
+<div id="loading-container">
+  <h2>Loading Assets</h2>
+  <p id="loading-message"></p>
+</div>
 
 
-
+<!-- Leap motion hand model from: https://github.com/roboleary/LeapCursor.js
   <script src="LeapCursor/leapcursor-with-dependencies.min.js?gestureColor=#6DCC44"></script>
 <div class="fixed">
 Leap motion controller will appear her at rest:
 
 </div>
+-->
 
 
 
-  <!-- GLSL vertex shader for the moon -->
-  <script id="norm-vert-shader" type="x-shader/x-vertex">
+<!-- GLSL vertex shader for the moon -->
+<script id="norm-vert-shader" type="x-shader/x-vertex">
     attribute vec4 tangent;
 
     uniform vec2 uvScale;
@@ -248,8 +219,8 @@ Leap motion controller will appear her at rest:
     }
   </script>
 
-  <!-- GLSL fragment shader for the moon -->
-  <script id="norm-frag-shader" type="x-shader/x-fragment">
+<!-- GLSL fragment shader for the moon -->
+<script id="norm-frag-shader" type="x-shader/x-fragment">
     uniform sampler2D textureMap;
     uniform sampler2D normalMap;
 
@@ -274,24 +245,40 @@ Leap motion controller will appear her at rest:
     }
   </script>
 
-  <!--plugins for the leap motion controller-->
+<!-- Leap motion hand model from: https://github.com/roboleary/LeapCursor.js-->
+<script src="LeapCursor/leapcursor-with-dependencies.min.js?gestureColor=#6DCC44"></script>
+<div class="fixed">
+  Leap motion controller will appear her at rest:
+
+</div>
+
+
+<!--plugins for the leap motion controller-->
 <script type="text/javascript" src="//js.leapmotion.com/leap-plugins-0.1.12.min.js"></script>
 <script type="text/javascript" src="//js.leapmotion.com/leap-plugins-0.1.12.js"></script>
 <script type="text/javascript" src="//js.leapmotion.com/leap.rigged-hand-0.1.7.min.js"></script>
 <script type="text/javascript" src="//js.leapmotion.com/leap.rigged-hand-0.1.7.js"></script>
 
-  <!-- Include vendor scripts -->
-  <script type="text/javascript" src="vendor/three.min.js"></script>
-  <script type="text/javascript" src="vendor/TrackballControls.js"></script>
-  <script type="text/javascript" src="vendor/detector.min.js"></script>
-  <script type="text/javascript" src="vendor/stats.min.js"></script>
-  <script type="text/javascript" src="vendor/screenfull.min.js"></script>
+<!-- Include vendor scripts -->
+<script type="text/javascript" src="vendor/three.min.js"></script>
+<script type="text/javascript" src="vendor/TrackballControls.js"></script>
+<script type="text/javascript" src="vendor/detector.min.js"></script>
+<script type="text/javascript" src="vendor/stats.min.js"></script>
+<script type="text/javascript" src="vendor/screenfull.min.js"></script>
 
-  <!-- Include Three.JS scene controller script -->
-  <script type="text/javascript" src="js/index.js"></script>
+<!-- Include Three.JS scene controller script -->
+<script type="text/javascript" src="js/index.js"></script>
 
-  <noscript>
-    <p>You need javascript enabled in order to use this web application.</p>
-  </noscript>
+<!--test for leap motion source : https://github.com/spren9er/threeleapcontrols-->
+<script type="text/javascript" src="js1/Detector.js"></script>
+<script type="text/javascript" src="js1/jquery.min.js"></script>
+<script type="text/javascript" src="js1/three.min.js"></script>
+<script type="text/javascript" src="js1/leap.min.js"></script>
+<script type="text/javascript" src="LeapCameraControls.js"></script>
+<script type="text/javascript" src="LeapObjectControls.js"></script>
+
+<noscript>
+  <p>You need javascript enabled in order to use this web application.</p>
+</noscript>
 </body>
 </html>
