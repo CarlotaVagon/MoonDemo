@@ -1,8 +1,7 @@
-/* NOTE TO SELF : there seem to be a few problems :
-* 1. "var used instead of 'let' or 'const'" - So I need to see the difference and change it
-* 2. in line 153 there is a then missing .... "promise returned from toggle is ignored"
-* 3. "deprecated symbol used, consult docs for better alternative" (both likes 190 and 192
-* Minor errors in the typos of starfield and cubemap */
+/* The code had to be updated to make it run plus new functions were added to provide
+* leap motion functionality. Moreover I added comments to make the code more clear something
+* that was not done by the original creator cory gross. Unless specified by the comment
+* "created by cory gross" I coded it.*/
 (function () {
     'use strict';
 
@@ -11,6 +10,7 @@
         return;
     }
 
+    /*cory gross coded this part, I had to change all var to let*/
     let hud = document.getElementById('hud');
     let container = document.getElementById('container');
 
@@ -26,15 +26,17 @@
     let clock;
     let controls;
     let stats;
+
     /*my addition for the leap motion*/
     let projector;
     let objects = [], objectsControls = [], cameraControls;
-
     let lastControlsIndex = -1, controlsIndex = -1, index = -1;
 
+    /*created by cory gross*/
     let moon;
     let starfield;
     let light = {
+        /*I edited the speed to make it slower*/
         speed: 0.1,
         distance: 1000,
         position: new THREE.Vector3(0, 0, 0),
@@ -47,11 +49,11 @@
         }
     };
 
-    /*This function stops the speed of the light shader for the moon*/
+    /*This event listener stops the speed of the light shader for the moon*/
     document.querySelector('.row').addEventListener('click', function(e) {
         if (e.target.type === 'button') {
             let speed = 0;
-            if (e.target.id === 'btn-stop') {
+            if (e.target.id === 'but-stop') {
                 speed = 0.0;
             }
 
@@ -73,8 +75,8 @@
     });
 
 
-
     /*created by cory gross*/
+    /*This function created the moons size shape and the shaders*/
     const createMoon = (textureMap, normalMap) => {
         let radius = 200;
         let xSegments;
@@ -106,6 +108,8 @@
 
         });
 
+        /*edited from the original to be able to work wit the leap motion controller*/
+        /*This section of code sets the starting position and orientation of the moon*/
         let mesh = new THREE.Mesh(geo, mat);
         mesh.geometry.computeTangents();
         mesh.position.x = 0;
@@ -116,7 +120,8 @@
         mesh.rotation.x = 0;
         mesh.rotation.y = 180;
         mesh.rotation.z = 0;
-        // leap object controls
+
+        /* leap object controls are created here to be able to rotate and zoom*/
         let objectControls = new THREE.LeapObjectControls(camera, mesh);
 
         objectControls.rotateEnabled  = true;
@@ -135,6 +140,7 @@
 
 
     /*created by cory gross*/
+    /*This function creates the star background for moon*/
     function createSkybox(texture) {
         let size = 15000;
 
@@ -165,7 +171,7 @@
             preserveDrawingBuffer: true
         });
 
-        /*render*/
+        /*render for the leap motion controller*/
         renderer.setClearColor(0x000000, 1);
         renderer.setSize(window.innerWidth, window.innerHeight);
         container.appendChild(renderer.domElement);
@@ -181,16 +187,16 @@
         let origin = new THREE.Vector3(0, 0, 0);
         camera.lookAt(origin);
 
-        // leap camera controls
+        /*leap camera controls for the leap  motion controller*/
         cameraControls = new THREE.LeapCameraControls(camera);
 
-        //for rotation
+        /*Rotation section*/
         cameraControls.rotateEnabled  = true;
         cameraControls.rotateSpeed    = 3;
         cameraControls.rotateHands    = 1;
         cameraControls.rotateFingers  = [2, 3];
 
-        //for zooming
+        /*Zoom section*/
         cameraControls.zoomEnabled    = true;
         cameraControls.zoomSpeed      = 6;
         cameraControls.zoomHands      = 1;
@@ -198,22 +204,18 @@
         cameraControls.zoomMin        = 50;
         cameraControls.zoomMax        = 2000;
 
-        //was not implemented due to lack of time (could be done in future work)
-        //cameraControls.panEnabled     = false;
-        //cameraControls.panSpeed       = 2;
-        //cameraControls.panHands       = 2;
-        //cameraControls.panFingers     = [6, 12];
-        //cameraControls.panRightHanded = false; // for left-handed person
 
-        //world
+        /*Creates the world that can be controled with both mouse and leap motion*/
         scene = new THREE.Scene();
 
-        //projector
+        /*The projector is used for the leap motion*/
         projector = new THREE.Projector();
 
 
 
-        // world coordinate system (thin dashed helping lines)
+        /*This section of code creates a coordinate system for the leap motion to use
+        * It also includes a small dashed line coloured in black that shows the axis
+        * Black to blend with the background, still slightly visible*/
         let lineGeometry = new THREE.Geometry();
         let vertArray = lineGeometry.vertices;
         vertArray.push(new THREE.Vector3(1000, 0, 0), origin, new THREE.Vector3(0, 1000, 0), origin, new THREE.Vector3(0, 0, 1000));
@@ -224,7 +226,9 @@
 
 
         scene.add(camera);
-        /*look here might be good for the leap motion control*/
+
+        /*created by cory gross*/
+        /*This section connects the moon to the mouse controls to zoom and rotate the model*/
         controls = new THREE.TrackballControls(camera);
         controls.rotateSpeed = 0.5;
         controls.dynamicDampingFactor = 0.5;
@@ -241,6 +245,7 @@
         clock = new THREE.Clock();
     }
 
+    /*Leap motion function for a pointer that was never implemented due to lack of time*/
     function changeControlsIndex() {
         if (lastControlsIndex == controlsIndex) {
             if (index != controlsIndex && controlsIndex > -2) {
@@ -255,6 +260,8 @@
         lastControlsIndex = controlsIndex;
     };
 
+    /*Leap motion function that changes the size of the moon
+    * returns: coordinates */
     function transform(tipPosition, w, h) {
         let width = 150;
         let height = 150;
@@ -269,6 +276,7 @@
         return [x, y];
     };
 
+    /*Leap motion function for a pointer that was never implemented due to lack of time*/
     function showCursor(frame) {
         let hl = frame.hands.length;
         let fl = frame.pointables.length;
@@ -286,6 +294,9 @@
         };
     };
 
+    /*Leap motion function that feeds the leap motion controller with information of its readings
+    * and changes the model accordingly
+    * returns: object index which it most change*/
     function focusObject(frame) {
         let hl = frame.hands.length;
         let fl = frame.pointables.length;
@@ -323,6 +334,7 @@
         renderer.render(scene, camera);
     }
 
+    /*Leap motion rendering function*/
     function render() {
         renderer.render(scene, camera);
     }
@@ -333,6 +345,8 @@
     }
 
     /*created by cory gross*/
+    /*This function was edited to only include the key event that worked
+    * This was the h to toggle HUD, creates a fullscreen only showing the moon*/
     function onDocumentKeyDown (evt) {
         switch (evt.keyCode) {
             case 'H'.charCodeAt(0):
@@ -416,11 +430,9 @@
     function onWindowLoaded() {
         loadAssets({
             paths: {
-                /*changed image of moon to more detailed*/
-                /*notes for some reason the nasa images dont load, investigate why*/
+                /*changed image of moon to more detailed version*/
                 moon: 'img/maps/moon8k.jpg',
                 moonNormal: 'img/maps/normal8k.jpg',
-                /*test comment out starfield for high resolution of the moon*/
                 starfield: [
                     'img/starfield/front.png',
                     'img/starfield/back.png',
@@ -447,24 +459,21 @@
 
         init();
 
-        // leap loop
+        /*Leap motion section
+        * The Leap loop start the reading of the controller and updates the information every
+        *  given time interval*/
         Leap.loop(function(frame) {
+            /*Could have included a cursor function if had had more time*/
             // show cursor
             //showCursor(frame);
 
-            // set correct camera control
+            /*set correct camera control*/
             controlsIndex = focusObject(frame);
             if (index == -1) {
                 cameraControls.update(frame);
             } else {
                 objectsControls[index].update(frame);
             };
-
-            // custom modifications (here: show coordinate system always on target and light movement)
-            //coords1.position = cameraControls.target;
-            //coords2.position = cameraControls.target;
-            //coords3.position = cameraControls.target;
-            //light.position   = camera.position;
 
             render();
         });
