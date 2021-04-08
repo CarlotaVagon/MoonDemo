@@ -28,15 +28,9 @@
 <div id="container2"></div>
 <div id="cursor"></div>
 <!-- Overlay HUD -->
+
+<!-- settings features  -->
 <div id="hud">
-  <!--To do
-  - Create the settings on off buttons
-  - change the link of my name to my git
-  - make it pretty
-  -make a similar one for info in the top left
-  -make expanding features
-  - pop ups and zoom in or out
-  -->
   <div class="hud-panel top-right">
     <!-- settings icon-->
     <div class="dropdown">
@@ -47,51 +41,25 @@
       <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
-
-        <a>Leap motion
-          <!--<button onclick="turnOnLeap()">Turn On</button>
-          <div class="fixed">
-              Leap motion controller will appear her at rest:
-          </div>-->
-
-        </a>
+        <!-- This button will stop the light from rotating around the moon -->
         <a>Light rotation:
           <div class="row">
-            <input type="button" id="btn-stop" class="btn-a" value="stop">
+            <input type="button" id="but-stop" class="btn-a" value="stop">
           </div>
         </a>
 
         <a href="https://github.com/CarlotaVagon/MoonDemo" target="_blank"><u>WebGL Moon Demo</u></a>
         <a href="http://coryg89.github.io/" target="_blank" ><u>Creator: Cory Gross</u></a>
-        <!--might create my own website and add a link here?-->
         <a >2nd Developer: Carlota Vazquez</a>
 
       </div>
     </div>
-
-    <!--<script>
-        function turnOnLeap() {
-            var x = document.getElementById("fixed");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-                <script src="LeapCursor/leapcursor-with-dependencies.min.js?gestureColor=#6DCC44"></script>
-    } else {
-    x.style.display = "none";
-    }
-    }
-    </script>-->
-
-
-
-
-
   </div>
-  <!-- the "buttons" at the bottom must change this layout!-->
-  <!--To Do:
-  - change this and basically delete it
-  -find that thing in the left bottom corner and figure it out-->
 
-  <!-- Information feature-->
+
+
+  <!-- Information feature section includes descriptions of each mission
+   plus a link to a website with more information-->
   <div class="hud-panel top-left">
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -166,6 +134,7 @@
       }
     </script>
 
+
   </div>
   <div class="hud-panel bottom-right">
     <em>h</em> to toggle HUD
@@ -177,15 +146,6 @@
   <h2>Loading Assets</h2>
   <p id="loading-message"></p>
 </div>
-
-
-<!-- Leap motion hand model from: https://github.com/roboleary/LeapCursor.js
-  <script src="LeapCursor/leapcursor-with-dependencies.min.js?gestureColor=#6DCC44"></script>
-<div class="fixed">
-Leap motion controller will appear her at rest:
-
-</div>
--->
 
 
 
@@ -245,10 +205,11 @@ Leap motion controller will appear her at rest:
     }
   </script>
 
-<!-- Leap motion hand model from: https://github.com/roboleary/LeapCursor.js-->
+<!-- Leap motion hand model based from source: https://github.com/roboleary/LeapCursor.js
+later on edited by me to go with the style of the website -->
 <script src="LeapCursor/leapcursor-with-dependencies.min.js?gestureColor=#6DCC44"></script>
 <div class="fixed">
-  Leap motion controller will appear her at rest:
+  Leap motion gestures: 2/3 fingers rotate and 4/5 fingers to zoom in or out.
 
 </div>
 
@@ -269,7 +230,8 @@ Leap motion controller will appear her at rest:
 <!-- Include Three.JS scene controller script -->
 <script type="text/javascript" src="js/index.js"></script>
 
-<!--test for leap motion source : https://github.com/spren9er/threeleapcontrols-->
+<!--leap motion gestures based on source : https://github.com/spren9er/threeleapcontrols
+edited by me to be able to make the moon move as expected and deleted any unused functions-->
 <script type="text/javascript" src="js1/Detector.js"></script>
 <script type="text/javascript" src="js1/jquery.min.js"></script>
 <script type="text/javascript" src="js1/three.min.js"></script>
