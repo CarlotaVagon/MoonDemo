@@ -312,7 +312,22 @@ input:checked + .slider:before {
     background-color: #000;
 }
 
-/*leap motion*/
+
 canvas{
     pointer-events: none;
+}
+
+/*leap motion*/
+#cursor {
+    position: absolute;
+    left: -1000px;
+    top: -1000px;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border: 1px solid #39FF14;
 }
