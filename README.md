@@ -1,87 +1,43 @@
-Moon Demo
-============
+Instruction: 
 
-A photorealistic 3D graphics demo of our Moon written in JavaScript and WebGL
-featuring real high-resolution satellite maps. Check out the
-[**live demo**][demo]! You'll need a modern browser with WebGL enabled in order
- to run it. I recommmend [**Google Chrome**][chrome].
+To run the code just run the file index.html
+This file is able to run without the leap motion controller connected to your computer.
 
-I recently tested this in Chrome for Android on my Galaxy Note 3 and it ran
-fine at 60 FPS. The stars were not visible. I think they are just too small.
+Best quality images included only to safe space.
+More images can be found on my github of the different level of qualities I tested.
 
-[![Moon Demo Screenshot][screen1]][screen1]
+Leap motion instructions: 
 
-Dependencies
-------------
+Connect the leap motion controller through a USB port, make sure to be able to see the control panel
 
-This demo uses the following open source libraries:
+From the leap motion application website: https://developer-archive.leapmotion.com/documentation/javascript/supplements/Leap_Application.html
 
- * [**`mrdoob/three.js`**][three.js] - JavaScript 3D Graphics Library - WebGL
- * [**`sindresorhus/screenfull.js`**][screenfull.js] - Cross-browser
-   wrapper for native JS Fullscreen API w/ simpler interface.
+Unplugged-Icon (black) — the Leap Motion controller is unplugged (or the Leap Motion software hasn’t 
+detected it yet).
 
-Credit
-------
+Normal-Icon(green) — the Leap Motion controller and software are operating normally.
 
-In order to create a photorealistic demo I set out to find the highest quality
-public domain maps of the Moon available. I found out that there is good data
-published through the Map a Planet initiative and available on the
-[**USGS PDS site**][USGS]. The best data we have for our Moon was actually
-gathered by the [**Clementine spacecraft**][Clementine]. It is possible to
-process a greyscale image of the entire surface of our Moon using this data,
-and as far as I know the best maps of the lunar surface we have today were
-derived from this data. I was delighted to know that all this great data
-available from USGS is public domain.
+Smudge-Icon (orange)— indicates that a smudge or other contamination might be clouding 
+the Leap Motion Controller sensor window.
 
-The best map I could find was processed by [**Jens Meyer**][Jens Meyer] and
-apparently also darkened up by [**Steve Albers**][Steve Albers]. It and other
-high quality maps can be found on Steve Albers homepage and available free for
-personal non-commercial use. I say this map is the _best_ in the sense that it
-has the highest resolution and detail compared to other maps I could find.
+ForcePause (red)-Icon — indicates that tracking has been suspended because the Leap 
+Motion frame rate is below the acceptable threshold. USB bandwidth contention is the 
+primary correctable cause of poor performance and can often be resolved by plugging 
+the Leap Motion controller into a different USB port, plugging the controller directly 
+into the computer rather than using USB hubs or extender cables, or removing other USB devices.
 
-The original resolution of the map found on Steve Albers' homepage is
-`8192x4096`. I am using a version scaled down in both width and height by
-50% giving a texture at resolution `4096x2048`. I find this size suitable for
-my demo.
+FPSLow-Icon (yellow) — indicates that the Leap Motion frame rate is below the acceptable 
+threshold and you have turned off the Avoid Poor Performance option in the Leap Motion
+Control Panel. Tracking continues with greatly reduced reliability.
 
-My scaled down version is shown here:
+Updates-Icon (green with a purple arrow)— indicates that an update is available for 
+the Leap Motion software. Open the Leap Motion Control Panel to install the update.
 
-[![Scaled Moon Map][scaled_map_thumb]][scaled_map]
+Once connected and running correction run the index.html file 
+The hand should be recognised and the leap motion should be reading all the gestures.
 
-Technical
----------
+Gestures are:
 
-This demo is an example of using WebGL with the Three.JS JavaScript library.
-GLSL shaders are used to create a material which is applied to the moon in
-order to simulate diffuse light calculated for each vertex on the Moon mesh.
-This allows the effect of the Moon changing phases. 
+Zoom in out, 4 or 5 fingers and moving the hands up and down (closer or further away from the controller)
 
-I also generated 6 randomized star patterns in order to create the skybox
-around the scene, as well as generating a tangent space normal map from the
-original high resolution map. I generated normal maps at both the original size
-and the scaled verison.
-
-The scaled normal map is shown here:
-
-[![Scaled Normal Map][scaled_normal_thumb]][scaled_normal]
-
-If you wish to learn more about how this demo was created, please check out my
-[**blog post**][blog post] for a more detailed technical explanation.
-
-[demo]: http://coryg89.github.io/MoonDemo
-[basic_demo]: http://coryg89.github.io/MoonDemo/basic.html
-[blog post]: http://coryg89.github.io/technical/2013/06/01/photorealistic-3d-moon-demo-in-webgl-and-javascript/
-
-[scaled_map]: img/maps/moon.jpg
-[scaled_map_thumb]: img/maps/moon1024x512.jpg
-[scaled_normal]: img/maps/normal.jpg
-[scaled_normal_thumb]: img/maps/normal1024x512.jpg
-[screen1]: img/screens/screen1.png
-
-[chrome]: https://google.com/chrome
-[three.js]: https://github.com/mrdoob/three.js/
-[screenfull.js]: https://github.com/sindresorhus/screenfull.js/
-[Steve Albers]: http://laps.noaa.gov/albers/sos/sos.html
-[Jens Meyer]: http://home.arcor.de/jimpage/earth.html
-[USGS]: http://pdsmaps.wr.usgs.gov/PDS/public/explorer/html/mmfront.htm
-[Clementine]: http://en.wikipedia.org/wiki/Clementine_(spacecraft)
+Rotate, with 2 or 3 fingers you move your hand left, right, up or down in the direction you want to rotate it. 
