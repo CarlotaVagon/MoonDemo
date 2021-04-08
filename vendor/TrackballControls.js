@@ -18,7 +18,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 	this.radius = ( this.screen.width + this.screen.height ) / 4;
 
 	this.rotateSpeed = 1.0;
-	this.zoomSpeed = 1.2;
+	this.zoomSpeed = 0.5;
 	this.panSpeed = 0.3;
 
 	this.noRotate = false;
@@ -162,7 +162,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 		}
 
 	};
-// improve the quality
+// improve the quality done also slowed down to be able to control the movement better
 	this.zoomCamera = function () {
 
 		if ( _state === STATE.TOUCH_ZOOM ) {
@@ -194,7 +194,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 		}
 
 	};
-
+//for moving from side to side, speed also adjusted to have better control
 	this.panCamera = function () {
 
 		var mouseChange = _panEnd.clone().sub( _panStart );
