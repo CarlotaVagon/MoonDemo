@@ -1,8 +1,8 @@
 /*
  * @author Torsten Sprenger / http://torstensprenger.com
- *
+ * https://github.com/spren9er/threeleapcontrols
  * Leap Object Controls (http://leapmotion.com)
- * 
+ * edited by Carlota Vazquez deleting sections that were unused
  */
 
 THREE.LeapObjectControls = function(camera, object) {
@@ -43,23 +43,13 @@ THREE.LeapObjectControls = function(camera, object) {
   this.scaleStabilized    = false;
   this.scaleMin           = 0.1;
   this.scaleMax           = 10;
-  
-  // pan
- // this.panEnabled         = true;
-  //this.panSpeed           = 1.0;
-  //this.panHands           = 2;
-  //this.panFingers         = [6, 12];
-  //this.panRightHanded     = true;
-  //this.panHandPosition    = true;
-  //this.panStabilized      = false;
+
   
   // internals
   var _rotateXLast        = null;
   var _rotateYLast        = null;
   var _scaleZLast         = null;
-  //var _panXLast           = null;
-  //var _panYLast           = null;
-  //var _panZLast           = null;
+
 
   // helpers
   this.transformFactor = function(action) {
@@ -68,8 +58,6 @@ THREE.LeapObjectControls = function(camera, object) {
         return _this.rotateSpeed * (_this.rotateHandPosition ? 1 : _this.fingerFactor);
       case 'scale':
         return _this.scaleSpeed * (_this.scaleHandPosition ? 1 : _this.fingerFactor);
-      //case 'pan':
-        //return _this.panSpeed * (_this.panHandPosition ? 1 : _this.fingerFactor);
     };
   };
 
@@ -81,9 +69,7 @@ THREE.LeapObjectControls = function(camera, object) {
     return _this.transformFactor('scale') * THREE.Math.mapLinear(delta, -400, 400, -2, 2);
   };
 
-  //this.panTransform = function(delta) {
-    //return _this.transformFactor('pan') * THREE.Math.mapLinear(delta, -400, 400, -_this.step, _this.step);
-  //};
+
 
   this.applyGesture = function(frame, action) {
     var hl = frame.hands.length;
@@ -120,21 +106,6 @@ THREE.LeapObjectControls = function(camera, object) {
           };
         };
         break;
-     // case 'pan':
-       // if (_this.panHands instanceof Array) {
-         // if (_this.panFingers instanceof Array) {
-         //   if (_this.panHands[0] <= hl && hl <= _this.panHands[1] && _this.panFingers[0] <= fl && fl <= _this.panFingers[1]) return true;
-         // } else {
-          //  if (_this.panHands[0] <= hl && hl <= _this.panHands[1] && _this.panFingers == fl) return true;
-        //  };
-      //  } else {
-         // if (_this.panFingers instanceof Array) {
-          //  if (_this.panHands == hl && _this.panFingers[0] <= fl && fl <= _this.panFingers[1]) return true;
-         // } else {
-          //  if (_this.panHands == hl && _this.panFingers == fl) return true;
-        //  };
-       // };
-        //break;
     };
 
     return false;
@@ -168,12 +139,7 @@ THREE.LeapObjectControls = function(camera, object) {
             } else {
               return lh;
             };
-         // case 'pan':
-           // if (_this.panRightHanded) {
-            //  return rh;
-           // } else {
-            //  return lh;
-           // };
+
         };
       };
     };
@@ -197,12 +163,6 @@ THREE.LeapObjectControls = function(camera, object) {
           ? (_this.scaleStabilized ? h.stabilizedPalmPosition : h.palmPosition) 
           : (_this.scaleStabilized ? frame.pointables[0].stabilizedTipPosition : frame.pointables[0].tipPosition)
         );
-     // case 'pan':
-       // h = _this.hand(frame, 'pan');
-        //return (_this.panHandPosition
-        //  ? (_this.panStabilized ? h.stabilizedPalmPosition : h.palmPosition)
-         // : (_this.panStabilized ? frame.pointables[0].stabilizedTipPosition : frame.pointables[0].tipPosition)
-       // );
     };
   };
 
@@ -235,9 +195,6 @@ THREE.LeapObjectControls = function(camera, object) {
       _rotateYLast = y;
       _rotateXLast = x;
       _scaleZLast  = null;
-      //_panXLast    = null;
-      //_panYLast    = null;
-      //_panZLast    = null;
     } else {
       _rotateYLast = null;
       _rotateXLast = null;      
@@ -258,48 +215,18 @@ THREE.LeapObjectControls = function(camera, object) {
       _scaleZLast  = z; 
       _rotateXLast = null;
       _rotateYLast = null;
-      //_panXLast    = null;
-      //_panYLast    = null;
-      //_panZLast    = null;
+
     } else {
       _scaleZLast  = null; 
     };
   };
 
-  /*this.panObject = function(frame) {
-    if (_this.panEnabled && _this.applyGesture(frame, 'pan')) {
-      var x = _this.position(frame, 'pan')[0];
-      var y = _this.position(frame, 'pan')[1];
-      var z = _this.position(frame, 'pan')[2];
-      if (!_panXLast) _panXLast = x;
-      if (!_panYLast) _panYLast = y;
-      if (!_panZLast) _panZLast = z;
-      var xDelta = x - _panXLast;
-      var yDelta = y - _panYLast;
-      var zDelta = z - _panZLast;
-
-      var v = _this.camera.localToWorld(new THREE.Vector3(_this.panTransform(xDelta), _this.panTransform(yDelta), _this.panTransform(zDelta)));
-      v.sub(_this.camera.position);
-      _this.object.position.add(v);
-
-      _panXLast    = x;
-      _panYLast    = y;
-      _panZLast    = z;
-      _rotateXLast = null;
-      _rotateYLast = null;
-      _scaleZLast  = null;
-    } else {
-      _panXLast = null;
-      _panYLast = null;
-      _panZLast = null;     
-    };
-  };*/
 
   this.update = function(frame) {
     if (_this.enabled) {
       _this.rotateObject(frame);
       _this.scaleObject(frame);
-      //_this.panObject(frame);
+
     };
   };
 };
